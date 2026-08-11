@@ -1,9 +1,32 @@
 package br.com.hiago.hiagoAPis;
 
+import tools.jackson.databind.ObjectMapper;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Tarefa {
     private String descricao;
     private boolean concluida;
     private String pessoaResponsavel;
+
+    private  ObjectMapper mapper = new ObjectMapper();
+
+
+    public Tarefa(String descricao, boolean concluida, String pessoaResponsavel) {
+        this.descricao = descricao;
+        this.concluida = concluida;
+        this.pessoaResponsavel = pessoaResponsavel;
+    }
+
+    public json transformaEmJson(Tarefa dados) throws IOException {
+       // mapper.readValue(dados);
+        FileWriter conversor = new FileWriter("tarefa.json");
+		conversor.write(tarefas.toString());
+		conversor.close();
+
+        return  json;
+    }
 
 
     public String getPessoaResponsavel() {

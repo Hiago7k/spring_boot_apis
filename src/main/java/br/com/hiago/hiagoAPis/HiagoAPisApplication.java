@@ -3,7 +3,10 @@ package br.com.hiago.hiagoAPis;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import tools.jackson.databind.ObjectMapper;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -15,15 +18,19 @@ public class HiagoAPisApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Scanner teclado = new Scanner(System.in);
-		System.out.println("Spring boot Console");
-		System.out.println("Digite um numero: ");
-		int numeroDigitado = teclado.nextInt();
+		//serializar a classe tarefas para um arquivo json
+		// 1 estanciar a classe tarefas ok
+		// 2 Transformar essa classe em um JSON, através do jackson
+		// Talvez criar um mappper, depois utilizar ele
 
-		System.out.println("Iniciando contagem até: " + numeroDigitado);
-		for(var i = 1; i <= numeroDigitado; i++){
-			System.out.println(i);
-		}
+		Tarefa tarefas = new Tarefa("Lavar roupas", true, "Hiago Mendes");
+		System.out.println(tarefas.toString());
+
+//		FileWriter conversor = new FileWriter("tarefa.json");
+//		conversor.write(tarefas.toString());
+//		conversor.close();
+
+
 
 	}
 }
